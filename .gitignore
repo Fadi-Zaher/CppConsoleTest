@@ -1,3 +1,6 @@
+# Debug Binaries
+/Debug
+
 # Prerequisites
 *.d
 
