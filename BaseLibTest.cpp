@@ -15,10 +15,9 @@ namespace CppConsoleApplicationTest
 {
 	TEST_CLASS(CppCommandTest)
 	{
-		public:	TEST_METHOD(TestCommand)
+		public:	TEST_METHOD(TestTrim)
 		{
-			std::string s = " \t\n  Hello World  ";
-			std::string trimmed = trim(s);
+			std::string trimmed = trim(" \t\n  Hello World  ");
 			Assert::IsTrue(0 == trimmed.compare(HELLO_WORLD_TRIMED));
 		}
 	};

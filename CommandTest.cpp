@@ -23,19 +23,18 @@ bool CommandEcho(std::vector<std::string> params)
 
 namespace CppConsoleApplicationTest
 {
-
 	TEST_CLASS(CppCommandTest)
 	{
-		public:	TEST_METHOD(TestCommand)
+		public:	TEST_METHOD(TestParser)
 		{
 			Assert::IsTrue(CMD_ECHO == CommandName(CMD_LINE_ECHO));
-
 			std::vector<std::string> params = CommandParams(CMD_LINE_ECHO);
-			Assert::IsTrue(params.size() == 0);
+			Assert::IsTrue(1 == params.size());
+			return;
 		}
 		
 
-		public:	TEST_METHOD(TestCommands)
+		public:	TEST_METHOD(TestCommandEcho)
 		{
 				Commands* pCommands = CommandsInit();
 				Assert::IsNotNull(pCommands);
