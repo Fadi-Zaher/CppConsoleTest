@@ -77,9 +77,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(ProjectName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(ProjectName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -101,12 +105,12 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(IntermediateOutputPath)Command.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -158,19 +162,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\CppConsoleAPI\BaseLib.cpp" />
-    <ClCompile Include="..\CppConsoleAPI\Command.cpp" />
-    <ClCompile Include="BaseLibTest.cpp" />
-    <ClCompile Include="CommandTest.cpp" />
+    <ClCompile Include="..\CppConsoleAPI\BaseLib\BaseLib.cpp" />
+    <ClCompile Include="..\CppConsoleAPI\Commands\Commands.cpp" />
+    <ClCompile Include="..\CppConsoleAPI\Commands\CommandsApi.cpp" />
+    <ClCompile Include="Tests\BaseLibTest.cpp" />
+    <ClCompile Include="Tests\CommandsTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\CppConsoleAPI\BaseLib.h" />
-    <ClInclude Include="..\CppConsoleAPI\Command.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CppConsoleAPI\ConsoleApplication.vcxproj">
-      <Project>{30cff692-e4a6-41f6-93e5-722cec40d8ff}</Project>
-    </ProjectReference>
+    <ClInclude Include="..\CppConsoleAPI\BaseLib\BaseLib.h" />
+    <ClInclude Include="..\CppConsoleAPI\Commands\Commands.h" />
+    <ClInclude Include="..\CppConsoleAPI\Commands\CommandsApi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
